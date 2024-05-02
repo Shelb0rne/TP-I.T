@@ -1,6 +1,4 @@
 import org.junit.Test;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.time.Duration;
@@ -64,9 +62,20 @@ public class Check {
         assertEquals(new BigInteger("1890"), Main._mult());
     }
     @Test
+    public void testMemory(){
+        Main.nums = Arrays.asList(5L, 3L, 7L, 2L, 9L);
+        assertEquals(new BigInteger("1890"), Main._mult());
+        assertEquals(26, Main._sum());
+        assertEquals(2, Main._min());
+        assertEquals(9, Main._max());
+        long usedBytes = Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
+        System.out.println("Использованная память: "+ usedBytes/1048576 + " мб");
+    }
+    @Test
     public void test_min() {
         Main.nums = Arrays.asList(5L, 3L, 7L, 2L, 9L);
         assertEquals(2, Main._min());
+
     }
 
     @Test
